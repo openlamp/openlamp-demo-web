@@ -1,4 +1,6 @@
-# wled-midi-web
+<p align="center"><img src="assets/banner.svg" alt="OpenLamp Web Demo" width="100%"></p>
+
+# OpenLamp Web Demo
 
 **Drive a WLED device from any MIDI input, in the browser — no install, no server.**
 A reference implementation of the [wled-midi](https://github.com/openlamp/openlamp-spec-midi) convention
