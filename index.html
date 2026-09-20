@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>wled-midi-web — drive WLED from MIDI in the browser</title>
+<title>openlamp-demo-web — drive WLED from MIDI in the browser</title>
 <style>
   :root { color-scheme: light dark; }
   body { font: 15px/1.5 system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
@@ -17,9 +17,9 @@
   code { background: #8883; padding: 0 .25em; border-radius: 3px; }
 </style>
 
-<h1>wled-midi-web</h1>
+<h1>openlamp-demo-web</h1>
 <p class="sub">Drive a WLED device from any MIDI input, in the browser — a reference implementation of the
-<a href="https://github.com/openlamp/openlamp-spec-midi">wled-midi</a> convention (<code>lamp</code> mode). 100% local, no server.</p>
+<a href="https://github.com/openlamp/openlamp-spec-midi">OpenLamp MIDI</a> convention (<code>lamp</code> mode). 100% local, no server.</p>
 
 <fieldset>
   <label for="ip">WLED device IP</label>
@@ -71,7 +71,7 @@
 <p class="sub warn" id="ctxwarn"></p>
 
 <script>
-const LOOKS = { // note -> [r,g,b] or "effect"  (wled-midi SPEC §4.1)
+const LOOKS = { // note -> [r,g,b] or "effect"  (OpenLamp MIDI SPEC §4.1)
   59:[0,0,0], 60:[255,0,0], 61:[255,85,0], 62:[255,200,0], 63:[0,255,0],
   64:[0,200,255], 65:[0,0,255], 66:[255,0,170], 67:[255,255,255], 68:"effect" };
 const UTIL = { 48:{on:false}, 50:{on:true}, 52:{on:"t"}, 53:{bri:0}, 55:"restore", 56:{seg:[{fx:0}]} };
@@ -87,7 +87,7 @@ const status = m => $("status").textContent = m;
 
 // secure-context caveat (Web MIDI is blocked on plain http://<ip>)
 if (!window.isSecureContext) $("ctxwarn").textContent =
-  "⚠ Web MIDI needs a secure context. On plain http://<ip> it's blocked — open via https, localhost, or a reverse proxy (see the wled-midi tooling docs).";
+  "⚠ Web MIDI needs a secure context. On plain http://<ip> it's blocked — open via https, localhost, or a reverse proxy (see the OpenLamp MIDI tooling docs).";
 
 // ---- batching: coalesce a ~40 ms window into one POST /json/state (SPEC §7) ----
 let pending = null, timer = null;
